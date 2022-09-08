@@ -37,7 +37,7 @@ Example: `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/`
 
 ### Quantifiers
 
-Quantifiers indicate that the preceding token must be matched a certain number of times. A quantifire can be greedy or lazy that is explained below.
+Quantifiers indicate that the preceding token must be matched a certain number of times. These can be classified as "greedy" or "lazy".
 
 * `a*a+a?`	-0 or more, 1 or more, 0 or 1
     * "+" Matches 1 or more of the preceding token.
@@ -45,9 +45,9 @@ Quantifiers indicate that the preceding token must be matched a certain number o
     * "?" Matches 0 or 1 of the preceding token, effectively making it optional.
     * "?" Makes the preceding quantifier lazy, causing it to match as few characters as possible. By default, quantifiers are greedy, and will match as many characters as possible.
 
-* `a{5}a{2,}`	 -Looks for exactly five, two or more
-* `{2,6}`  	    -forces the input of characters between two & six characters long.
-* `a+?a{2,}?`	 -match as few as possible
+* `a{5}a{2,}`	 -Looks for exactly five, two, or more
+* `{2,6}`  	    -forces the input of characters between two and six characters long.
+* `a+?a{2,}?`	 -matches as few as possible
 * `ab|cd`	    -match ab or cd
 
 ### OR Operator
@@ -95,10 +95,10 @@ See Character Class to see some examples.
 ### Greedy and Lazy Match
 
 * 'Greedy' means matching the longest possible string.
-    A Greedy quantifier tells the engine to match as many instances of its quantified token or subpattern as possible. This behavior is called greedy.
+    A Greedy quantifier lets the engine know to match as many instances of its quantified token as possible. This is referred to as greedy.
 
 * 'Lazy' means matching the shortest possible string.
-    A lazy quantifier tells the engine to match as few of the quantified tokens as needed. As you'll see in the table below, a regular quantifier is made lazy by appending a ? question mark to it.
+    A lazy quantifier lets the engine know to match as few of the quantified tokens needed. In the table below, a regular quantifier is made lazy by attaching a ? question mark to it.
 
 See [link]"https://javascript.info/regexp-greedy-and-lazy for more detailed information.
 
@@ -112,11 +112,11 @@ Since digits are considered to be word characters, `\b4\b` can be used to match 
 
 `\B` is the negated version of `\b`. `\B` matches at every position where `\b` does not. Effectively, `\B` matches at any position between two word characters as well as at any position between two non-word characters.
 
-There are more boundries with the Regex Engine. Some examples include Tcl, GNU, and POSIX.
+There are more boundaries with the Regex Engine. Some examples include GNU, TCL, as well as POSIX.
 
 ### Back-references
 
-Backreferences match the same text as previously matched by a capturing group. Suppose you want to match a pair of opening and closing HTML tags, and the text in between. By putting the opening tag into a backreference, we can reuse the name of the tag for the closing tag.
+Back-references are used to match the same text that was previously matched by a capturing group. Suppose you want to match a pair of opening and closing HTML tags, and the text in between. By putting the opening tag into a backreference, we can reuse the name of the tag for the closing tag.
 
 For Example: `<([A-Z][0-9]*)\b[^>]*>.*?</\1>` This regex contains only one pair of parentheses, which capture the string matched by `[A-Z][0-9]*`. This is the opening HTML tag. The backreference `\1` references the first capturing group. `\1` matches the exact same text that was matched by the first capturing group. The `/` before it is a literal character. It is simply the forward slash in the closing HTML tag that we are trying to match.
 
