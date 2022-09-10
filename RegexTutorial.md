@@ -1,4 +1,4 @@
-# Regex Tutorial
+# Regex Tutorial (with Email)
 
 ## Overview
 
@@ -7,6 +7,10 @@ A Regular Expression or "REGEX" for short, is a sequence of characters that defi
 Using REGEX we can look for a string of code.
 
 Example: `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/`
+
+The regular expression below can be used to verify that user input is a valid email address:
+
+>`/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/g`
 
 ## Table of Contents
 
@@ -34,6 +38,12 @@ Example: `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/`
     * `\b` Matches a word boundary position between a word character and non-word character or position (start / end of string). See the word character class (w) for more info.
     * `\B` Matches any position that is not a word boundary. This matches a position, not a character.
     * See Boundaries for more detailed Information
+   
+E-mail Regex:  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/g`
+<br> - Email Example: `validemail@gmail.com`
+
+
+Starts the check at the start of the email address and ends the check at the end of the string.
 
 ### Quantifiers
 
@@ -49,6 +59,14 @@ Quantifiers indicate that the preceding token must be matched a certain number o
 * `{2,6}`  	    -forces the input of characters between two and six characters long.
 * `a+?a{2,}?`	 -matches as few as possible
 * `ab|cd`	    -match ab or cd
+
+E-mail Regex:  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/g`
+<br> - Email Example: `validemail@gmail.com`
+
+ `+` first follows the character set: `[a-z0-9_/.-]`.
+ This checks for 1 or more of those allowed characters: `(validEmail)`.
+ `{2,6}` follows the character set: `[a-z\.]`.
+ This quantifier says "Match between 2 and 6 of the preceding characters: `(.com)`.
 
 ### OR Operator
 
@@ -69,6 +87,9 @@ Character classes match a character from a specific set. There are a number of p
 * `\d` Matches any digit character (0-9)
 * `\p` Matches a character in the specified unicode category.
 
+E-mail Regex:  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/g`
+All characters that are  contained in the email address example are allowed by the Character Classes a-z, 0-9, /d, /., and @ these still are considered  valid
+
 ### Flags
 
 Expression flags change how the expression is interpreted. Flags follow the closing forward slash of the expression.
@@ -80,17 +101,34 @@ Expression flags change how the expression is interpreted. Flags follow the clos
 * `y` The expression will only match from its lastIndex position and ignores the global (g) flag if set. Because each search in RegExr is discrete, this flag has no further impact on the displayed results.
 * `s` Dot (.) will match any character, including newline.
 
+E-mail Regex:  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/g`
+<br> - Email Example: `validemail@gmail.com`
+
+There is one global occurrence of this email address.
+
+
 ### Grouping and Capturing
 * `(ABC)` Capturing groups multiple tokens together and creates a capture group for extracting a substring or using a backreference.
 * `(?<name>ABC)` named capturing group captures groups of a specific name.
 * `\1` is a numeric Referance
 * `(?:ABC)` Groups multiple tokens together without creating a capture group.
 
+E-mail Regex:  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/g`
+<br> - Email Example: `validemail@gmail.com`
+* Group 1 is `validemail`
+* Group 2 is `gmail`
+* Group 3 is `.com`
+
 ### Bracket Expressions
 
 A bracket expression enclosed in square brackets is a regular expression that matches a single character, or collating element. If the initial character is a circumflex ^, then this bracket expression is complemented.
 
 See Character Class to see some examples.
+
+E-mail Regex:  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/g`
+<br> - Email Example: `validemail@gmail.com`
+
+All characters in `validemail@gmail.com` fulfill the bracket expressions constraints.
 
 ### Greedy and Lazy Match
 
@@ -101,6 +139,13 @@ See Character Class to see some examples.
     A lazy quantifier lets the engine know to match as few of the quantified tokens needed. In the table below, a regular quantifier is made lazy by attaching a ? question mark to it.
 
 See [link]"https://javascript.info/regexp-greedy-and-lazy for more detailed information.
+
+E-mail Regex:  `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/g`
+- Greedy Quantifier Used: `+` , `{2,6}`
+    >* no lazy quantifiers were used
+
+<br> - Email Example: `validemail@gmail.com`
+
 
 ### Boundaries
 
@@ -140,5 +185,6 @@ Jonathan Gordon - UCF Coding Bootcamp
     [BackRef] (https://www.regular-expressions.info/backref.html)
     
     [RegExpression](https://www.regular-expressions.info/wordboundaries.html)
+    [RegExpression](https://www.regular-expressions.info/email.html)
 
 My Github [github] https://github.com/JGordon59
